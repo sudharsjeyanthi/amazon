@@ -1,0 +1,241 @@
+package main;
+
+
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashMap;
+public class Amazonp {
+
+	
+		static Scanner sc=new Scanner(System.in);
+		static Scanner sc1=new Scanner(System.in);
+		private static String name,email;
+		private static int id,mobileno,otp=345,otp1,max=1000,Mno;
+		static ArrayList l=new ArrayList();
+		static HashMap hm=new HashMap();
+		
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			Homepage();
+		}
+		static void Homepage() {
+		System.out.print("Welcome to Amazon!"+"\n"+"1.Admin"+"\n"+"2.Merchant"+"\n"+"3.Buy"+"\n"+"Enter your choice:");
+		int choice=sc1.nextInt();
+		switch(choice) {
+		case 1:
+			Admin();
+			break;
+		case 2:
+			Merchant();
+			break;
+		case 3:
+			Buy();
+			break;
+		default:
+			System.exit(0);
+		}
+		}
+		
+		static void Admin() {
+			System.out.println("Welcome to admin");
+				System.out.println("1.Add merchant"+"\n"+"2.Approve merchant"+"\n"+"3.Viewall");
+				int ad=sc1.nextInt();
+				if(ad==1) {
+					Newuser();
+				}
+				if(ad==2) {
+					System.out.print("Enter the product :");
+					String p=sc.nextLine();
+					l.add(p);
+					System.out.print(l);
+					if(p.equals("drugs")||p.equals("DRUGS")) {
+						System.out.println("You cannot access your application");
+					}else {
+						System.out.print("Enter the brand :");
+						String brand=sc.nextLine();
+						System.out.print("Which company you were selling previously :");
+						String a=sc.nextLine();
+						System.out.print("Enter your bank account details");
+						String acc=sc.nextLine();
+						System.out.print("Enter your PAN number :");
+						int pan=sc1.nextInt();
+						String pe=Integer.toString(pan);
+						if(pe.length()==10) System.out.println("Approved successfully"+"\n"+"Your id is 678");
+						else	System.out.println("Invalid number");
+						
+					}
+				}
+				if(ad==3) {
+					System.out.println("If you want to view buyer enter 1 else 2");
+					int v=sc1.nextInt();
+					if(v==1)	Buy();
+					else if(v==2)	Merchant();
+			
+				}
+			}
+			
+		
+		static void Merchant() {
+			System.out.println("Enter your destination");
+			String d=sc.nextLine();
+			if(d.equals("newuser")) {
+				Newuser();
+			}else if(d.equals("existing user")) {
+				existingUser();
+			}else {
+				System.out.println("Invalid input");
+			}
+			Homepage();
+		}
+		 static void Newuser() {
+			
+			System.out.print("Welcome new user"+"\n"+"Enter your name :");
+			String name=sc.nextLine();
+			System.out.print("Enter your address :");
+			String addr=sc.nextLine();
+			System.out.print("Enter your email :");
+			String email=sc.nextLine();
+			System.out.print("Enter your mobile number :");
+			int mno=sc1.nextInt();
+			String s1=Integer.toString(mno);
+			if(s1.length()==10)	System.out.println("Otp has been sent to your mobile number once you have received enter it");
+			else	System.out.print("Invalid mobile number");
+			hm.put("name",name);
+			hm.put("address",addr);
+			hm.put("email", email);
+			hm.put("mno", mno);
+			int otp=sc1.nextInt();
+			String res=(otp==otp1) ? "Registered successfully" : "Your otp is invalid";
+			System.out.println(res);
+		
+		}
+		static void existingUser() {
+			System.out.println("1.add product"+"\n"+"2.updation"+"\n"+"3.removal"+"\n"+"Enter your choice");
+			int a=sc.nextInt();
+			String pdt,rpdt,dpdt;
+			HashSet h=new HashSet();
+		
+			if(a==1) {
+				for(int i=0;i<max;i++) {
+			        pdt=sc.nextLine();
+					l.add(pdt);
+					System.out.print(l);
+				}
+			}
+			if(a==3) {
+				System.out.println("1.Remove whole product"+"\n"+"2.Remove duplicate products"+"\n"+"3.Remove profile"+"\n"+"Ur choice is");
+				int c=sc.nextInt();
+				if(c==1) {
+					for(int i=0;i<max;i++) {
+						rpdt=sc.nextLine();
+						l.clear();
+						System.out.println(l);
+					}
+				}else if(c==2) {
+					for(int i=0;i<max;i++) {
+						dpdt=sc.nextLine();
+						h.add(dpdt);
+						System.out.println(h);
+					}
+				}else if(c==3) {
+					l.clear();
+					System.out.println(l);
+					System.out.println("Your profile has been removed ");
+				}
+				
+			}
+			if(a==2) {
+				System.out.print("If you wish to update profile enter 1 else 2");
+				int wish=sc1.nextInt();
+				if(wish==2) {
+				System.out.print("Enter the product which u want to update");
+				String u=sc.next();
+				System.out.println("Enter the updated rate");
+				int r=sc1.nextInt();
+				System.out.println("Re-enter the updated rate");
+				int r1=sc1.nextInt();
+				String x= (r==r1) ? "Updated successfully" : "Not updated";
+				System.out.println(x);
+				}else if(wish==1) {
+				System.out.print("Enter your name :");
+				String ch=sc.nextLine();
+				System.out.print("Enter your mobile number :");
+				int cmno=sc1.nextInt();
+				System.out.print("Enter your email :");
+				String ce=sc.nextLine();
+				System.out.print("Enter your address :");
+				String ca=sc.nextLine();
+				System.out.println("Your profile updated successfully");
+				}
+				}
+					
+		}
+			
+		
+		static void Buy() {
+				System.out.println(" 1.My cart "+" 2.order "+" 3.payment "+"\n"+"Your choice is:");
+				String ad;
+				int c=sc1.nextInt();
+				if(c==1) {
+					System.out.println("If u want to add products enter 1 else 2");
+					int add=sc1.nextInt();
+					if(add==1) {
+						System.out.println("Enter the products in cart");
+						for(int i=0;i<max;i++) {
+							ad=sc.nextLine();
+							l.add(ad);
+							System.out.println(l);
+						}
+					}else if(add==2) {
+						for(int i=0;i<max;i++) {
+							ad=sc.nextLine();
+							l.remove(ad);
+							System.out.println(l);
+						}
+					}
+					
+				}
+				if(c==3) {
+					Payment();
+				}
+				if(c==2) {
+					System.out.println("Enter the products");
+					for(int i=0;i<max;i++) {
+						ad=sc.nextLine();
+						l.add(ad);
+						System.out.println(l);
+						System.out.println("Your order is received successfully proceed to payment");
+
+					}
+
+				}
+				Payment();
+				
+			}
+		static void Payment() {
+			System.out.print("Enter your payment mode");
+			String m=sc.nextLine();
+			if(m.equals("visa") || (m.equals("gpay") || (m.equals("paytm") || (m.equals("debit card"))))) {
+				System.out.print("enter your card number:");
+				int card=sc1.nextInt();
+				System.out.print("enter mobile no :");
+				int mobile=sc.nextInt();
+				System.out.print("enter empiry date :");
+				int date=sc1.nextInt();
+				System.out.print("enter ccv number :");
+				int ccv=sc1.nextInt();
+				String s1=Integer.toString(ccv);
+				if(s1.length()==3)	System.out.print("enter otp which is sent to your mobileno :");
+				else	System.out.print("Your ccv number is invalid");
+				int o=sc1.nextInt();
+				if(o==otp)	System.out.println("Your payment is successful");
+				else	System.out.println("Invalid otp");
+	           }
+		
+	}
+}
+		
+
+	
+
